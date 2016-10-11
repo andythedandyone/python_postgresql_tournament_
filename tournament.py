@@ -6,7 +6,6 @@
 import psycopg2
 
 
-
 def connect():
     """Connect to the PostgreSQL database.  Returns a database connection."""
     return psycopg2.connect("dbname=tournament")
@@ -102,7 +101,7 @@ def reportMatch(winner, loser):
 
     db = connect()
     c = db.cursor()
-    c.execute("insert into matches(id, opponent_id, win, loss) values(%s, %s, 1, 0)", (winner, loser))
+    c.execute("insert into matches(id, opponent_id, win) values(%s, %s, 1)", (winner, loser))
     db.commit()
     db.close()
 
