@@ -15,7 +15,7 @@ CREATE DATABASE tournament;
 
 CREATE TABLE players(id serial PRIMARY KEY, name text);
 
-CREATE TABLE matches(id INTEGER REFERENCES players(id) ON DELETE CASCADE,
+CREATE TABLE matches(id INTEGER PRIMARY KEY REFERENCES players(id) ON DELETE CASCADE,
                      opponent_id INTEGER REFERENCES players(id) ON DELETE CASCADE,
                      win INTEGER DEFAULT 0,
                      UNIQUE (id, opponent_id)
